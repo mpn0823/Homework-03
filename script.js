@@ -28,7 +28,7 @@ function randChar(){
   var lo = 33;    //start of non whitespace chars in ASCII
   var hi = 126;   //end of non whitespace chars in ASCII
   var r = window.crypto.getRandomValues(new Uint32Array(1))[0];
-  return String.fromCharCode(r % (hi - lo) + lo);
+  return String.fromCharCode(r % (hi - lo + 1) + lo);
 }
 
 // Returns true if at least one character in given string matches
