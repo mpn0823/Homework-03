@@ -27,7 +27,8 @@ function generateRegex(numeric, special, uppercase, lowercase){
 function randChar(){
   var lo = 33;    //start of non whitespace chars in ASCII
   var hi = 126;   //end of non whitespace chars in ASCII
-  return String.fromCharCode(Math.round(Math.random() * (hi - lo) + lo));
+  var r = window.crypto.getRandomValues(new Uint32Array(1))[0];
+  return String.fromCharCode(r % (hi - lo) + lo);
 }
 
 // Returns true if at least one character in given string matches
@@ -87,4 +88,8 @@ var generateBtn = document.querySelector("#generate");
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-
+// Testing out cryptographic random number generator
+var array = new Uint32Array(10);
+window.crypto.getRandomValues(array);
+ 
+ 
